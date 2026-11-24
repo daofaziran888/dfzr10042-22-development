@@ -256,6 +256,7 @@ SEED_ROWS: dict[str, list[dict[str, Any]]] = {
   '分母事件': '归因分析样例3',
   '分子事件': '归因分析样例3',
   '模型状态': '归因分析样例3'}],
+
     "dashboard_def": [{'id': 1,
   'status': '草稿',
   'pending': True,

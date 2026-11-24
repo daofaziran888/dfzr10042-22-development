@@ -6,6 +6,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from app.domain.attribution_ledger import ledger
 from app.seed import SEED_ROWS
 
 
@@ -14,11 +15,15 @@ class Store:
         self._tables: dict[str, list[dict[str, Any]]] = {
             name: [dict(row) for row in rows] for name, rows in SEED_ROWS.items()
         }
+        # 归因权重明细由有效归属账本实时生成，示例种子只给其他模块兜底。
+        self._tables["attribution_weight"] = []
 
     def module_names(self) -> list[str]:
         return sorted(self._tables)
 
     def rows(self, module: str) -> list[dict[str, Any]]:
+        if module == "attribution_weight":
+            return ledger.module_rows()
         return self._tables.setdefault(module, [])
 
     def find(self, module: str, entry_id: int) -> dict[str, Any] | None:

@@ -9,6 +9,7 @@ from app.services.segment_builder import SegmentBuilderService
 from app.services.ab_experiment import AbExperimentService
 from app.services.experiment_result import ExperimentResultService
 from app.services.attribution_model import AttributionModelService
+from app.services.attribution_weight import AttributionWeightService
 from app.services.dashboard_def import DashboardDefService
 from app.services.drill_path import DrillPathService
 from app.services.cohort_analysis import CohortAnalysisService
@@ -33,6 +34,7 @@ SERVICES: dict[str, BaseModuleService] = {
     "ab_experiment": AbExperimentService(),
     "experiment_result": ExperimentResultService(),
     "attribution_model": AttributionModelService(),
+    "attribution_weight": AttributionWeightService(),
     "dashboard_def": DashboardDefService(),
     "drill_path": DrillPathService(),
     "cohort_analysis": CohortAnalysisService(),

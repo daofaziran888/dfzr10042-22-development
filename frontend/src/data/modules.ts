@@ -80,6 +80,18 @@ export const MODULES: ModuleMeta[] = [
     metrics: ["模型总数", "生效中模型", "已失效模型"],
   },
   {
+    key: "attribution_weight",
+    name: "归因权重明细",
+    entity: "权重明细",
+    desc: "按生效时间聚合的归因权重组别明细，由投放复盘账本实时生成，原渠道及转化保持可追溯。",
+    fields: ["明细编号", "渠道", "组别", "生效时间", "归因权重", "订单数", "原订单", "确认状态"],
+    statuses: ["已确认", "待处理"],
+    actions: [],
+    actionTargets: {},
+    metrics: ["明细总数", "乙组权重", "待处理明细"],
+    readOnly: true,
+  },
+  {
     key: "dashboard_def",
     name: "看板定义",
     entity: "数据看板",

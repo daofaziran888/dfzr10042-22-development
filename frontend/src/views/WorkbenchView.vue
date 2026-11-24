@@ -6,7 +6,7 @@
         <p class="page-desc">{{ meta.desc }}</p>
       </div>
       <div class="page-actions">
-        <button class="btn primary" data-testid="open-create" type="button" @click="openCreate">
+        <button v-if="!meta.readOnly" class="btn primary" data-testid="open-create" type="button" @click="openCreate">
           登记{{ meta.entity }}
         </button>
         <button class="btn" data-testid="export" type="button" @click="exportRows">
@@ -50,6 +50,7 @@
           <td v-for="column in meta.fields" :key="column">{{ row[column] ?? '—' }}</td>
           <td>{{ row.status }}</td>
           <td class="row-actions">
+            <span v-if="meta.readOnly" class="hint-text">只读视图</span>
             <button
               v-for="action in meta.actions"
               :key="action"
@@ -64,7 +65,7 @@
         </tr>
         <tr v-if="!rows.length">
           <td :colspan="meta.fields.length + 2" class="empty-state">
-            暂无{{ meta.name }}数据，可先登记{{ meta.entity }}
+            暂无{{ meta.name }}数据{{ meta.readOnly ? '' : `，可先登记${meta.entity}` }}
           </td>
         </tr>
       </tbody>
